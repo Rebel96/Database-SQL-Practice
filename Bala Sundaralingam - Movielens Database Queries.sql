@@ -29,14 +29,9 @@ group by users.id;
 
 
 -- QUESTION 4: List the unique titles of each of the movies released on the most popular release day. 
--- SELECT title, release_date
--- FROM movies
--- WHERE release_date = (SELECT release_date FROM movies GROUP BY release_date;
-
--- COUNT(release_date) 
--- FROM Movies
--- group by release_date
--- order by COUNT(release_date) desc);
+SELECT title, release_date
+FROM movies
+WHERE release_date = (SELECT release_date FROM movies GROUP BY release_date ORDER BY COUNT(release_date) DESC LIMIT 1);
 
 
 -- QUESTION 5: Find the total number of movies in each genre, list the results in ascending numeric order. 
