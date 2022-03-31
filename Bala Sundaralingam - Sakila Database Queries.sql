@@ -38,8 +38,14 @@ SELECT title FROM film WHERE special_features LIKE '%Deleted Scenes%'; -- Finds 
 SELECT last_name FROM actor GROUP BY last_name HAVING COUNT(last_name) = 1 ORDER BY last_name DESC;
 
 -- QUESTION 12: Using HAVING list the last names that apper more than once, from highest to lowet frequency.
+SELECT last_name FROM actor GROUP BY last_name HAVING COUNT(last_name) > 1 ORDER BY COUNT(last_name) DESC;
 
 -- QUESTION 13: Which actor has appeared in the most films?
+SELECT first_name AS First, last_name AS Last, COUNT(actor.actor_id) AS Frequency FROM actor
+JOIN film_actor ON film_actor.actor_id=actor.actor_id
+GROUP BY film_actor.actor_id
+ORDER BY COUNT(actor.actor_id) DESC
+LIMIT 1;
 
 -- QUESTION 14: When is Academy Dinosaur due?
 SELECT release_year FROM film WHERE title = 'Academy Dinosaur';  -- Displays release year from film table for movie 'Academy Dinosaur'. 
